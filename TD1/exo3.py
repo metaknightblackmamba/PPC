@@ -5,24 +5,28 @@
     python script...!"""
 
 from multiprocessing import *
-import os
 import time
-import sys
-import signal
 
+# Program to reverse sentences 
+def child(data):
+  sentences = child_conn.recv()
+  child_conn.send(sentences[::-1])
+  child_conn.close()
 
-def f(conn):
-    
-    reverses = child_conn.recv()
-    child_conn.send(reverses.reverse())
-    conn.close()
+# Start algo & evalute time #
+start_time = time.time() 
+if __name__ == "__main__":
+  sentences = ""
+  while not sentences:
+    sentences = input("Enter a sentences to reverse : ")
+  parent_conn, child_conn = Pipe()
+  fatherProcess = Process(target=child, args=(child_conn,))
+  fatherProcess.start()
+  parent_conn.send(sentences)
+  print(parent_conn.recv())
+  parent_conn.close()
+  fatherProcess.join()  
 
-if __name__ == '__main__':
-    parent_conn, child_conn = Pipe()
-    global sentences
-    sentences = ['1','2','3','4','5','6','7','8','9']
-    p = Process(target=f, args=(child_conn, ))
-    p.start()
-    parent_conn.send(sentences)
-    print(parent_conn.recv())   # prints "[42, None, 'hello']"
-    p.join()
+end_time = time.time() 
+elaspTime = end_time - start_time
+print("time elasped: " "%.2f" % elaspTime + " s")
