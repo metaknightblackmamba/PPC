@@ -21,7 +21,7 @@ def sequenceFib(data):
      print("Please enter a positive integer")
   elif nterms == 1:
      print("Fibonacci sequence upto",nterms,":")
-     print(n1)
+     print(n1) 
   else:
      print("Fibonacci sequence:")
      while count < nterms:
@@ -35,7 +35,7 @@ def sequenceFib(data):
 
 
 # Start algo & evalute time #
-start_time = time.time() 
+start_time = time.time() # start_time = 0 
 if __name__ == "__main__":
   arg1 = int(sys.argv[1])
   if len(sys.argv) < 2:
