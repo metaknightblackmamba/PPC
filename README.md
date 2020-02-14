@@ -1,4 +1,4 @@
-# PPC 
+# PPC || Exercice to understand Python Processes/Threads/Multiprocessing/MultiThreads  
 
 ## TD1
 Usage: 
