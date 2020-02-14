@@ -19,6 +19,7 @@ if __name__ == "__main__":
   sentences = ""
   while not sentences:
     sentences = input("Enter a sentences to reverse : ")
+
   parent_conn, child_conn = Pipe()
   fatherProcess = Process(target=child, args=(child_conn,))
   fatherProcess.start()
