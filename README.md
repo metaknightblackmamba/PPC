@@ -1,4 +1,4 @@
-# PPC || Exercice to understand Python Processes/Threads/Multiprocessing/MultiThreads  
+# PPC || Exercices to understand Python Processes/Threads/Multiprocessing/MultiThreads  
 
 ## TD1 || Process/Signal/Pipe
 Usage: 

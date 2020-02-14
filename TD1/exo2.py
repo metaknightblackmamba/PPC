@@ -35,21 +35,21 @@ def child(data):
          count += 1
          time.sleep(2)
          print("Send Kill Signal to father Process")
-         os.kill(os.getppid(), signal.SIGUSR1)
+         os.kill(os.getppid(), signal.SIGUSR1) # send signal kill to process
 
 def handler(sig, stack):
-    if sig == signal.SIGUSR1:
+    if sig == signal.SIGUSR1: # if receive signal is for USER1 
       print('Received:', sig)
-      os.kill(childPID, signal.SIGKILL)
+      os.kill(childPID, signal.SIGKILL) # kill Child process
 
 # Start algo & evalute time #
 start_time = time.time() 
 if __name__ == "__main__":
   arg1 = int(sys.argv[1]) # take argument script to fibonacci fct
-  signal.signal(signal.SIGUSR1, handler) # send signal to handler fct
+  signal.signal(signal.SIGUSR1, handler) # send signal USER1 to handler fct
   childProcess = Process(target=child, args=((arg1,))) # create process and send one parameter
   childProcess.start() # start process
-  global childPID # initialize global var, 
+  global childPID # initialize global var
   childPID = childProcess.pid # PID of ChildProcess
   childProcess.join() # wait child process to finish
 end_time = time.time() 
