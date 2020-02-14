@@ -1,6 +1,6 @@
 # PPC || Exercice to understand Python Processes/Threads/Multiprocessing/MultiThreads  
 
-## TD1
+## TD1 || Process/Signal/Pipe
 Usage: 
 ```bash
 python3 <script.py> <args>
@@ -9,11 +9,12 @@ python3 <script.py> <args>
 How to see process:
 
 ```bash
-ps -ax 
+ps -ax
+ps -ax | grep <script.py>
 htop
 ```
 
 
 ## License
 
-[MIT](https://google.fr/)
+[MakeReadMe](https://www.makeareadme.com/)
