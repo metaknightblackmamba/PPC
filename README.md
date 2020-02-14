@@ -3,7 +3,7 @@
 ## TD1
 Usage: 
 ```bash
-python3 <script.py> args
+python3 <script.py> <args>
 ```
 
 How to see process:
