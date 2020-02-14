@@ -37,7 +37,7 @@ def sequenceFib(data):
 # Start algo & evalute time #
 start_time = time.time() # start_time = 0 
 if __name__ == "__main__":
-  arg1 = int(sys.argv[1])
+  arg1 = int(sys.argv[1]) # arg1 = 10 per exemple
   if len(sys.argv) < 2:
     print("require valid arg", file=sys.stderr)
     sys.exit(1)
