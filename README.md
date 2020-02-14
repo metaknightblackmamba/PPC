@@ -1,12 +1,19 @@
 # PPC 
 
-# TD1
-Start script: 
-
+## TD1
+Usage: 
+```bash
 python3 <script.py> args
+```
 
-How to process:
+How to see process:
 
+```bash
 ps -ax 
 htop
+```
 
+
+## License
+
+[MIT](https://google.fr/)
