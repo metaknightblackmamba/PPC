@@ -39,7 +39,7 @@ start_time = time.time() # start_time = 0
 if __name__ == "__main__":
   arg1 = int(sys.argv[1]) # arg1 = 10 per exemple
   with Manager() as manager: # create of context manager (share memory)
-      lst = manager.list()
+      lst = manager.list() # initialize share liste, context manager handle the share place(memory) between process
       if len(sys.argv) < 2:
         print("require valid arg", file=sys.stderr)
         sys.exit(1)
@@ -47,7 +47,7 @@ if __name__ == "__main__":
         p = Process(target=sequenceFib, args=((arg1, lst)))
         p.start()
         p.join()
-        print("Liste fib via father process:", lst) # display variable after edited by child Process
+        print("Liste fib via father process:", lst) # display liste after it was edit by child Process
       except ValueError as err:
         print(err)
 end_time = time.time()
