@@ -14,7 +14,10 @@ def user():
   while rep not in [1,2]: # if user answer not in list, spam the USER=)
     print("1 >> to get current date/time")
     print("2 >> to close server")
-    rep = int(input()) # return an int to tell server what to do (indeed with this return we gonna pass a type flag to messageQueue :s:s ?? I ll explain below
+    try:
+      rep = int(input()) # return an int to tell server what to do (indeed with this return we gonna pass a type flag to messageQueue :s:s ?? I ll explain below
+    except ValueError as e:
+      print("Please enter 1 (datetime) or 2 to quit")
   return rep
 
 try:
