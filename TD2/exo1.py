@@ -47,7 +47,7 @@ if __name__ == "__main__":
         p = Process(target=sequenceFib, args=((arg1, lst)))
         p.start()
         p.join()
-        print("Liste fib via father process:", lst)
+        print("Liste fib via father process:", lst) # display variable after edited by child Process
       except ValueError as err:
         print(err)
 end_time = time.time()
