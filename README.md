@@ -34,7 +34,6 @@ kill <PID above of exampleServer.py>
 ```
 
 Usage exo2:
-
 ```bash
 server.py
 client.py
@@ -47,6 +46,17 @@ Troubleshooting:
 ipcs
 htop
 ```
+
+## TD3 || Threads/MultiThreading
+Usage:
+```bash
+python3 example.py <int>
+python3 exo1.py <int>
+python3 exo2*.py
+```
+
+
+
 
 ## License
 
