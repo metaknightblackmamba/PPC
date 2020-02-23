@@ -3,7 +3,7 @@
 ## TD1 || Process/Signal/Pipe
 Usage: 
 ```bash
-python3 <script.py> <args>
+python3 <script.py> <int>
 ```
 
 How to see process:
@@ -17,7 +17,7 @@ htop
 ## TD2 || SharedMemory/MessagePassing
 Usage exo1:
 ```bash
-python3 exo1.py <args>
+python3 exo1.py <int>
 ```
 
 Usage Message passing demo:

@@ -24,7 +24,7 @@ if __name__ == "__main__":
     task_queue.put(t)
 
   data_ready = threading.Event()
-  res_queue = Queue()
+  res_queue = Queue() # create an additional queue (tube) to insert result of worker threads
 
   threads = [threading.Thread(target=worker, args=(task_queue, data, data_ready, res_queue)) for i in range(len(tasks))]
   for thread in threads:
@@ -46,6 +46,6 @@ if __name__ == "__main__":
     thread.join()
  
    
-  while not res_queue.empty():
-    res = res_queue.get()
-    print(res)
+  while not res_queue.empty(): # we loop until the queue resultat is empty
+    res = res_queue.get() # we grab one resultat in queue of worker threading 
+    print(res) # we print all result of worker thread
