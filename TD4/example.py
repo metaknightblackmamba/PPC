@@ -20,7 +20,7 @@ def fibonacci(n):
 if __name__ == "__main__":
     indexes = [random.randint(0, 100) for i in range(10)] # create 10 value between 0 and 100
  
-    with multiprocessing.Pool(processes = 4) as pool:
+    with multiprocessing.Pool(processes = 4) as pool: # create a pool of process (number = 4, one per cpu)
         print("*** Synchronous call in one process")
         result = pool.apply(fibonacci, (10,)) # block until get the response
         print(result)

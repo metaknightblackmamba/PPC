@@ -4,40 +4,49 @@
 """This is a awesome
     python script...!"""
 
-import random
-import concurrent.futures
-import sysv_ipc
+import os
 import sys
-import threading
-from queue import Queue
 import time
+import sysv_ipc
+import threading
 
-key = 666
+key = 999
 
-try: 
-  maillbox = sysv_ipc.MessageQueue(key, sysv_ipc.IPC_CREAT) # the server create a "mailbox", and now we can share data with clients
-except:
-  print("Message Queue", key, "already exist, terminating.")
-
-print("Starting Server")
-
-def worker(maillbox, pid):
+def worker(mq, m):
+  print("Starting thread:", threading.current_thread().name)
   datetime = time.asctime()
-  message = str(datetime).encode()
-  time.sleep(5)
-  print(pid)
-  maillbox.send(message, type = pid + 3) # here, our message flag is set to 3, like this the customer can filter on his side this message specially
+  message = str(datetime).encode() # encode current time
+  pid = int(m.decode()) # decode the PID of the thread client (send by the client)
+  t = pid + 3 # unique type of message queue, is for the client, like this he can filter his own msg
+  time.sleep(5) # just sleep to look behavior with several client
+  mq.send(message, type=t) # put in mailbox the current datetime and type of the msg who is PID+3
+  print("Ending thread:", threading.current_thread().name)
   
 
+if __name__ == "__main__":
+  print("Starting thread:", threading.current_thread().name)
+ 
+  try:
+    mq = sysv_ipc.MessageQueue(key, sysv_ipc.IPC_CREX) # create a mailbox/tube
+  except ExistentialError:
+    print("Message queue", key, "already exist, terminating.")
+    sys.exit(1)
 
-while True:
-    mq, t = maillbox.receive() # We take all type(flag) of message and parse it
-    if t == 1: # if the msg flag is set to 1, we send datetime, encode it to str then byte and post it at Laposte
-      pid = int(mq.decode())
-      thread = threading.Thread(target=worker, args=(maillbox, pid))
-      thread.start()
-      thread.join()
-    if t == 2: 
-      print("Shutdown Server.")
-      maillbox.remove() # if the clients send us a msg with type(flag)=2 we close our "mailbox" properly
-      break 
+  print("Starting time server.")
+
+  threads = []
+
+  while True:
+      m, t = mq.receive() 
+      if t == 1: 
+        p = threading.Thread(target=worker, args=(mq, m)) # create a thread worker to execute the datetime cmd. We have one thread for each client, which isn't secure. Because we can overflow the server 
+        p.start()
+        threads.append(p) # create a list of the current worker thread like this we can wait all worker
+      if t == 2: 
+        print("Shutdown Server.")
+        for thread in threads:
+          thread.join() # we wait all current worker to finish
+        mq.remove() # delete the mailbox/tube
+        break
+  print("Terminating time server.")
+  print("Ending thread:", threading.current_thread().name)

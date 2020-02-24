@@ -20,7 +20,7 @@ if __name__ == "__main__":
  
     with concurrent.futures.ThreadPoolExecutor(max_workers = 3) as executor: 
         print("Results returned via asynchronous map:")
-        for result in executor.map(fibonacci, indexes): # apply a function to iterable( indexes list)
+        for result in executor.map(fibonacci, indexes): # apply a function to iterable (indexes list)
             print(result)
  
         print("Results returned as Future objects as they complete:")

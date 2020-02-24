@@ -3,7 +3,7 @@ import sys
 import time
 import sysv_ipc
  
-key = 666
+key = 999                                # for comment see TD2
  
 def user():
     answer = 3
