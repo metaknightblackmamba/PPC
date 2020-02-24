@@ -55,7 +55,14 @@ python3 exo1.py <int>
 python3 exo2*.py
 ```
 
-
+## TD4 || Process/Threads Pool
+Usage:
+```bash
+python3 example*.py
+python3 exo1.py
+python3 client.py
+python3 server*.py
+```
 
 
 ## License
