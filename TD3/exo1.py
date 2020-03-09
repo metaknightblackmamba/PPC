@@ -8,7 +8,7 @@ incercle = 0 # initialize global variable
  
 def montecarlo(n): # generate some random point from 0 to n and do the montecarlo formule
     print("Starting thread:", threading.current_thread().name)
-    global incercle # same variable as above, but we have to initialize in this block because we don't pass it to the function 
+    global incercle 
     for i in range(n): # loop to generate number of digit between 0 to n
         x = random.random() # select random number
         y = random.random()

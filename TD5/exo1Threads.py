@@ -7,8 +7,8 @@ import random
 pointsInside = 0 # initialize global variable
  
 def pi(points, lock): 
-    #print("Starting thread:", threading.current_thread().name)
-    global pointsInside # same variable as above, but we have to initialize in this block because we don't pass it to the function 
+    print("Starting thread:", threading.current_thread().name)
+    global pointsInside 
     for i in range(points):
         x = random.uniform(-1, 1) 
         y = random.uniform(-1, 1)
