@@ -65,6 +65,12 @@ python3 server*.py
 ```
 
 
+## TD5 || Synchronization primitives
+Usage:
+```bash
+python3 exo*.py
+
+
 ## License
 
 [MakeReadMe](https://www.makeareadme.com/)
